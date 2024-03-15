@@ -23,23 +23,20 @@ import OwnerDashboard from "./pages/OwnerDashboard/OwnerDashboard";
 
 import EditProfile from "./pages/EditProfile/EditProfile";
 import OwnerProfilePage from "./pages/OwnerProfilePage/OwnerProfilePage";
-import LiveChat from "../src/pages/LiveChat/LiveChatPage"
-
+import LiveChat from "../src/pages/LiveChat/LiveChatPage";
 
 //import OwnerDashboard from "./pages/OwnerDashboard/OwnerDashboard";
-
 
 import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
 
-
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 
-
-
-const stripePromise = loadStripe('pk_test_51NRxMIAJ0RHQyfziSQFiiswOORe2ztGLwkPBLRjk5JezRTwYfqJ4VQ5D3ZzF5qw58O4M2KflSYTmdelmUVJEsWSJ00sshA570x');
+const stripePromise = loadStripe(
+  "pk_test_51NRxMIAJ0RHQyfziSQFiiswOORe2ztGLwkPBLRjk5JezRTwYfqJ4VQ5D3ZzF5qw58O4M2KflSYTmdelmUVJEsWSJ00sshA570x"
+);
 
 //version before deployment
 //const socket = io.connect("http://localhost:5005");
@@ -47,17 +44,17 @@ const socket = io.connect("https://petapp.fly.dev");
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
-  //commented this section out, there were not assignted values that coused errors during deployment 
-  const [username, /*setUsername*/] = useState("");
-  const [room, /*setRoom*/] = useState("");
-  const [showChat, /*setShowChat*/] = useState(false);
+  //commented this section out, there were not assignted values that coused errors during deployment
+  const [username /*setUsername*/] = useState("");
+  const [room /*setRoom*/] = useState("");
+  const [showChat /*setShowChat*/] = useState(false);
 
   //const options = {
   //clientSecret: process.env.STRIPE_SECRET_KEY
 
   //};
 
- /* const joinRoom = () => {
+  /* const joinRoom = () => {
     //console.log(username, room);
     if (username !== "" && room !== "") socket.emit("join_room", room);
     setShowChat(true);
@@ -75,7 +72,6 @@ function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/home" element={<HomePage />} />
               <Route path="/ownerhome" element={<OwnerHomepage />} />
-              
 
               <Route path="/pets/:petId" component={PetDetailsPage} />
               <Route path="/guidelines" element={<GuidelinesPage />} />
@@ -116,10 +112,8 @@ function App() {
                   </IsPrivate>
                 }
               />
-            <Route path="/owner/:ownerId" element={
-                    <OwnerProfilePage />
-                } />
-                <Route
+              <Route path="/owner/:ownerId" element={<OwnerProfilePage />} />
+              <Route
                 path="/ownerdashboard/:ownerId"
                 element={<OwnerDashboard />}
               />

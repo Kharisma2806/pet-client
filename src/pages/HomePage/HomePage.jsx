@@ -26,7 +26,7 @@ function HomePage() {
         let apiUrl = "";
 
         if (user.preference === "Dogs") {
-          apiUrl = "https://petapp.fly.dev/pet/dogs";
+          apiUrl = "https:///pet/dogs";
         } else if (user.preference === "Cats") {
           apiUrl = "https://petapp.fly.dev/pet/cats";
         } else if (user.preference === "Small Pets") {
@@ -328,7 +328,9 @@ function HomePage() {
         const ownerIds = [...new Set(petOwners)]; // Get unique owner IDs
 
         const ownerDataPromises = ownerIds.map(async (ownerId) => {
-          const res = await fetch(`https://petapp.fly.dev/api/owner/${ownerId}`);
+          const res = await fetch(
+            `https://petapp.fly.dev/api/owner/${ownerId}`
+          );
           const data = await res.json();
           return data;
         });
@@ -415,7 +417,14 @@ function HomePage() {
   };
 
   return (
-    <div style={{ backgroundImage: `url(${bgImg})`, backgroundSize: "cover", backgroundPosition: "center", minHeight: "100vh"  }}>
+    <div
+      style={{
+        backgroundImage: `url(${bgImg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        minHeight: "100vh",
+      }}
+    >
       <div className="carousel-container">
         {isLoggedIn ? (
           pets.length > 0 ? (
@@ -425,12 +434,18 @@ function HomePage() {
               disableDotsControls
               buttonsDisabled={false} // Disable the default buttons
               renderPrevButton={({ isDisabled }) => (
-                <button className="carousel-button prev absolute top-1/2 left-0 transform -translate-y-1/2 mt-4 ml-4" disabled={isDisabled}>
+                <button
+                  className="carousel-button prev absolute top-1/2 left-0 transform -translate-y-1/2 mt-4 ml-4"
+                  disabled={isDisabled}
+                >
                   Prev
                 </button>
               )}
               renderNextButton={({ isDisabled }) => (
-                <button className="carousel-button next absolute top-1/2 right-0 transform -translate-y-1/2 mt-4 mr-4" disabled={isDisabled}>
+                <button
+                  className="carousel-button next absolute top-1/2 right-0 transform -translate-y-1/2 mt-4 mr-4"
+                  disabled={isDisabled}
+                >
                   Next
                 </button>
               )}
@@ -447,4 +462,3 @@ function HomePage() {
 }
 
 export default HomePage;
-

@@ -9,7 +9,6 @@ function AuthProviderWrapper(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
 
-
   const storeToken = (token) => {
     localStorage.setItem("authToken", token);
   };
@@ -21,11 +20,11 @@ function AuthProviderWrapper(props) {
     // If the token exists in the localStorage
     if (storedToken) {
       // Send a request to the server using axios
-       
-        axios.get(
-          `https://petapp.fly.dev/auth/verify`,
-          { headers: { Authorization: `Bearer ${storedToken}` } }
-        )
+
+      axios
+        .get(`https:///auth/verify`, {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        })
         .then((response) => {
           const user = response.data;
           // Update state variables
@@ -33,10 +32,9 @@ function AuthProviderWrapper(props) {
           setIsLoading(false);
           setUser(user);
         })
-        
 
-      // Or using a service
-      /*authService
+        // Or using a service
+        /*authService
         .verify()
         .then((response) => {
           // If the server verifies that JWT token is valid  ✅
