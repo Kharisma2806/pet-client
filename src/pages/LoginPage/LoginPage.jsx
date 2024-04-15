@@ -25,7 +25,7 @@ function LoginPage() {
     // Send a request to the server using axios
 
     axios
-      .post(`https://petapp.fly.dev/auth/login`, requestBody)
+      .post(`http://localhost:5005/auth/login`, requestBody)
       .then((response) => {
         storeToken(response.data.authToken);
         authenticateUser();

@@ -176,7 +176,7 @@ function PetForm({ onSubmit }) {
 
 function OwnerHomepage() {
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  const { owner } = useContext(AuthContext);
 
   const handleSubmit = (formData) => {
     // Get the JWT token from wherever you have stored it (e.g., localStorage)
@@ -197,12 +197,16 @@ function OwnerHomepage() {
 
     // Make the API call to add the new pet
     axios
-      .post("https://petapp.fly.dev/pet/petprofile", formData, config)
+      .post("http://localhost:5005/pet/petprofile", formData, config)
       .then((response) => {
         const data = response.data;
         console.log(data);
         // After successful addition, navigate to the dashboard
-        navigate(`/ownerdashboard/${user._id}`);
+        if (owner && owner._id) {
+          navigate(`/ownerdashboard/${data.owner._id}`);
+        } else {
+          console.error("User ID not found.");
+        }
       })
       .catch((error) => {
         console.error(error);
