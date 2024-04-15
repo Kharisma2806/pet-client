@@ -17,9 +17,7 @@ function OwnerDashboard() {
     const fetchPetDetails = async () => {
       try {
         console.log("Fetching pet details from the server...");
-        const response = await axios.get(
-          `https://petapp.fly.dev/pet/pets/${ownerId}`
-        );
+        const response = await axios.get(`http://localhost:5005/${ownerId}`);
         console.log("Server response:", response.data);
         const petData = response.data;
         setFormData(petData);

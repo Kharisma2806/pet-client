@@ -13,9 +13,9 @@ function ShopHomePage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        //before the deployment 
-        //const res = await fetch("http://localhost:5005/api/shop_products");
-        const res = await fetch("https://petapp.fly.dev/api/shop_products");
+        //before the deployment
+        const res = await fetch("http://localhost:5005/api/shop_products");
+        //const res = await fetch("https://petapp.fly.dev/api/shop_products");
         const data = await res.json();
         console.log("Fetched products:", data);
         const groupedProducts = groupProductsByCategory(data);
@@ -49,7 +49,8 @@ function ShopHomePage() {
     const slides = [];
     console.log("Products:", products);
 
-    const numSlides = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 4; // Number of slides based on screen size
+    const numSlides =
+      window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 4; // Number of slides based on screen size
 
     for (let i = 0; i < images.length; i += numSlides) {
       const slideProducts = products.slice(i, i + numSlides);
@@ -76,9 +77,7 @@ function ShopHomePage() {
   return (
     <div className="shop-home-page">
       <ShopHeader title="Shop Page" />
-      <h1 className="shadow h-20 flex justify-between items-center">
-        
-      </h1>
+      <h1 className="shadow h-20 flex justify-between items-center"></h1>
       {Object.keys(groupedProducts).length > 0 ? (
         Object.entries(groupedProducts).map(([category, products]) => (
           <div key={category} className={`category ${category.toLowerCase()}`}>
@@ -96,9 +95,7 @@ function ShopHomePage() {
               buttonsDisabled={true} // Disable default buttons
               renderPrevButton={({ isDisabled }) => (
                 <button
-                  className={`custom-carousel-button prev-button ${
-                    category.toLowerCase()
-                  }`}
+                  className={`custom-carousel-button prev-button ${category.toLowerCase()}`}
                   disabled={isDisabled}
                 >
                   Prev
@@ -106,9 +103,7 @@ function ShopHomePage() {
               )}
               renderNextButton={({ isDisabled }) => (
                 <button
-                  className={`custom-carousel-button next-button ${
-                    category.toLowerCase()
-                  }`}
+                  className={`custom-carousel-button next-button ${category.toLowerCase()}`}
                   disabled={isDisabled}
                 >
                   Next

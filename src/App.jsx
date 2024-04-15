@@ -39,8 +39,8 @@ const stripePromise = loadStripe(
 );
 
 //version before deployment
-//const socket = io.connect("http://localhost:5005");
-const socket = io.connect("https://petapp.fly.dev");
+const socket = io.connect("http://localhost:5005");
+//const socket = io.connect("https://petapp.fly.dev");
 
 function App() {
   const [cartItems, setCartItems] = useState([]);

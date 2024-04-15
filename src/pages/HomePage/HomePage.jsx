@@ -298,13 +298,13 @@ function HomePage() {
         let apiUrl = "";
 
         if (user.preference === "Dogs") {
-          apiUrl = "https://petapp.fly.dev/pet/dogs";
+          apiUrl = "http://localhost:5005/pet/dogs";
         } else if (user.preference === "Cats") {
-          apiUrl = "https://petapp.fly.dev/pet/cats";
+          apiUrl = "http://localhost:5005/pet/cats";
         } else if (user.preference === "Small Pets") {
-          apiUrl = "https://petapp.fly.dev/pet/small_animals";
+          apiUrl = "http://localhost:5005/pet/small_animals";
         } else {
-          apiUrl = "https://petapp.fly.dev/pet/pets";
+          apiUrl = "http://localhost:5005/pet/pets";
         }
 
         const res = await fetch(apiUrl);
@@ -328,9 +328,7 @@ function HomePage() {
         const ownerIds = [...new Set(petOwners)]; // Get unique owner IDs
 
         const ownerDataPromises = ownerIds.map(async (ownerId) => {
-          const res = await fetch(
-            `https://petapp.fly.dev/api/owner/${ownerId}`
-          );
+          const res = await fetch(`http://localhost:5005/api/owner/${ownerId}`);
           const data = await res.json();
           return data;
         });
